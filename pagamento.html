@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulação de Pagamento</title>
+    <link rel="stylesheet" href="css/pagamento_style.css">
+</head>
+<body>
+    <header>
+        <h1>Escolha seu plano de pagamento</h1>
+    </header>
+
+        <form action="php/banco.php" method="POST">
+            <label>Nome:</label>
+            <input type="text" name="nome" required>
+
+            <label>Email:</label>
+            <input type="email" name="email" required>
+
+            <label>CPF:</label>
+            <input type="text" id="cpf" name="cpf" maxlength="11" required>
+
+            <button type="button" class="btn" onclick="consultarCPF()">Consultar CPF</button>
+
+            <label>Parcelas:</label>
+            <select id="parcelas" name="parcelas" required>
+                <option value="2">2x</option>
+                <option value="4">4x</option>
+                <option value="8">8x</option>
+                <option value="12">12x</option>
+                <option value="18">18x</option>
+            </select>
+
+            <label>Valor:</label>
+            <input type="number" id="valor" name="valor" min="100" required>
+
+            <button type="button" class="btn" onclick="calcularPagamento()">Calcular parcelas</button>
+
+            <div id="resultado"></div>
+
+            <button type="submit" class="btn">Confirmar simulação</button>
+        </form>
+    </div>
+
+    <script>
+    function consultarCPF() {
+        const cpf = document.getElementById("cpf").value;
+        if (cpf.length === 11) {
+            alert("CPF enviado para consulta: " + cpf);
+            // Aqui você pode depois conectar com a Receita Federal via API, se quiser.
+        } else {
+            alert("Digite um CPF válido (11 dígitos)");
+        }
+    }
+
+    function calcularPagamento() {
+        const valor = parseFloat(document.getElementById("valor").value);
+        const parcelas = parseInt(document.getElementById("parcelas").value);
+        const resultado = document.getElementById("resultado");
+
+        if (isNaN(valor) || valor <= 0 || isNaN(parcelas)) {
+            resultado.innerText = "Informe um valor válido e selecione o número de parcelas.";
+            return;
+        }
+
+        const jurosMensal = 0.10; // 10% ao mês
+        const valorFinal = valor * Math.pow(1 + jurosMensal, parcelas);
+        const valorParcela = valorFinal / parcelas;
+
+        resultado.innerText =
+            `\nValor Total com Juros: R$ ${valorFinal.toFixed(2)}\n` +
+            `Parcelado em ${parcelas}x de R$ ${valorParcela.toFixed(2)}`;
+    }
+    </script>
+</body>
+</html>
