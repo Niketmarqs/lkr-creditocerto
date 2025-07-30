@@ -34,5 +34,50 @@ body {
 }
 
 /* Inputs e selects */
-.paymen
+.payment-container input,
+.payment-container select,
+.payment-container textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    outline: none;
+}
+.payment-container input:focus,
+.payment-container select:focus,
+.payment-container textarea:focus {
+    border-color: #007bff;
+}
 
+/* Botões */
+.payment-container button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    background: #007bff;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+.payment-container button:hover {
+    background: #0056b3;
+}
+
+/* Caixa de resultado */
+.result-box {
+    background: #ffffff;
+    border: 1px solid #e1e1e1;
+    border-radius: 6px;
+    padding: 12px;
+    text-align: center;
+    font-size: 15px;
+    font-weight: bold;
+    color: #333;
+    margin: 15px 0;
+}
