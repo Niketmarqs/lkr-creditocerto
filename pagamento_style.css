@@ -7,7 +7,7 @@
 }
 
 body {
-    background: #5CA8F6;
+    background: #ffffff;
     color: #333;
     min-height: 100vh;
 }
@@ -20,7 +20,7 @@ body {
     align-items: center;
     justify-content: space-between;
     color: white;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 .header input {
@@ -35,5 +35,5 @@ body {
 /* Carrinho */
 .cart-icon {
     cursor: pointer;
-    background: #6A00FF;
-
+    background: #007bff;
+    padding: 8px 15p
