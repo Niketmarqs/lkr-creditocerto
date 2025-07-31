@@ -1,83 +1,129 @@
 /* Reset */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Arial, sans-serif;
 }
 
+/* Fundo geral */
 body {
-    background: #ffffff;
-    color: #333;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  background: #f4f6f9;
+  color: #333;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
 }
 
-/* Container principal */
+/* Topo da página */
+.topo-lkr {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.logo-lkr {
+  max-width: 160px;
+  height: auto;
+}
+
+.slogan {
+  font-size: 14px;
+  color: #0e1e35;
+  margin-top: 8px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+/* Container do formulário */
 .payment-container {
-    background: #f9f9f9;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-    width: 100%;
-    max-width: 450px;
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(14, 30, 53, 0.1);
+  width: 100%;
+  max-width: 480px;
+}
+
+/* Título */
+.payment-container h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #0e1e35;
 }
 
 /* Labels */
 .payment-container label {
-    display: block;
-    margin-bottom: 6px;
-    font-weight: 600;
-    color: #333;
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #444;
 }
 
 /* Inputs e selects */
 .payment-container input,
-.payment-container select,
-.payment-container textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 14px;
-    outline: none;
+.payment-container select {
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+  transition: 0.2s border;
 }
+
 .payment-container input:focus,
-.payment-container select:focus,
-.payment-container textarea:focus {
-    border-color: #007bff;
+.payment-container select:focus {
+  border-color: #007bff;
+  outline: none;
 }
 
 /* Botões */
-.payment-container button {
-    width: 100%;
-    padding: 12px;
-    margin-top: 10px;
-    background: #007bff;
-    border: none;
-    border-radius: 6px;
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
-.payment-container button:hover {
-    background: #0056b3;
+.btn {
+  background: #0e1e35;
+  color: #fff;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  margin-top: 10px;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
 }
 
-/* Caixa de resultado */
-.result-box {
-    background: #ffffff;
-    border: 1px solid #e1e1e1;
-    border-radius: 6px;
-    padding: 12px;
-    text-align: center;
-    font-size: 15px;
-    font-weight: bold;
-    color: #333;
-    margin: 15px 0;
+.btn:hover {
+  background: #142d50;
+}
+
+/* Resultado da simulação */
+#resultado {
+  background: #f8f9fa;
+  padding: 12px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #222;
+  white-space: pre-line;
+  margin-top: 15px;
+}
+
+/* Botão WhatsApp */
+#whatsapp-link {
+  background: #2ca58d;
+  color: #fff;
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: 6px;
+  padding: 10px 16px;
+  margin-top: 12px;
+  transition: background 0.3s ease;
+}
+
+#whatsapp-link:hover {
+  background: #25826f;
 }
