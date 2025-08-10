@@ -23,6 +23,7 @@ header {
 .logo {
   max-width: 140px;
   margin-bottom: 15px;
+  height: auto;
 }
 
 header h1 {
@@ -134,3 +135,4 @@ header p {
     font-size: 1rem;
   }
 }
+
