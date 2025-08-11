@@ -20,12 +20,15 @@ header {
   margin-bottom: 40px;
 }
 
+/* Ajuste da logo para responsividade */
 .logo {
-  max-width: 140px;
-  margin-bottom: 15px;
+  width: 100%;
+  max-width: 140px; /* tamanho máximo no desktop */
   height: auto;
+  margin-bottom: 15px;
 }
 
+/* Texto do cabeçalho */
 header h1 {
   color: #0a3d62;
   font-size: 2rem;
@@ -110,6 +113,11 @@ header p {
     width: 90%;
     max-width: 400px;
   }
+
+  /* Logo menor em tablets e celulares */
+  .logo {
+    max-width: 120px;
+  }
 }
 
 @media (max-width: 400px) {
@@ -134,5 +142,9 @@ header p {
     padding: 12px 0;
     font-size: 1rem;
   }
-}
 
+  /* Logo menor em telas muito pequenas */
+  .logo {
+    max-width: 100px;
+  }
+}
