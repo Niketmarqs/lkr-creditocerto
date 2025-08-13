@@ -6,12 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LKR Crédito Certo SP</title>
 
-<!-- Link para o CSS -->
+  <!-- Link para o CSS -->
   <link rel="stylesheet" href="pagamento_style.css">
 
 </head>
 <body>
-
 
   <!-- Topo com logo -->
   <header class="topo-lkr">
@@ -25,10 +24,10 @@
 
     <form action="php/banco.php" method="POST">
       <label>Nome:</label>
-      <input type="text" name="nome" required>
+      <input type="text" id="nome" name="nome" required>
 
       <label>Email:</label>
-      <input type="email" name="email" required>
+      <input type="email" id="email" name="email" required>
 
       <label>CPF:</label>
       <input type="text" id="cpf" name="cpf" maxlength="11" required>
@@ -50,7 +49,7 @@
 
       <div id="resultado"></div>
 
-      <a id="whatsapp-link" href="#" target="_blank" class="btn">📲 Enviar simulação no WhatsApp</a>
+      <a id="whatsapp-link" href="#" target="_blank" class="btn" style="display:none;">📲 Enviar simulação no WhatsApp</a>
 
       <br><br>
       <button type="submit" class="btn">Confirmar simulação</button>
@@ -67,45 +66,50 @@
       }
     }
 
-  function calcularPagamento() {
-  const valor = parseFloat(document.getElementById("valor").value);
-  const parcelas = parseInt(document.getElementById("parcelas").value);
-  const resultado = document.getElementById("resultado");
+    function calcularPagamento() {
+      const nome = document.getElementById("nome").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const valor = parseFloat(document.getElementById("valor").value);
+      const parcelas = parseInt(document.getElementById("parcelas").value);
+      const resultado = document.getElementById("resultado");
 
-  if (isNaN(valor) || valor <= 0 || isNaN(parcelas)) {
-    resultado.innerText = "Informe um valor válido e selecione o número de parcelas.";
-    return;
-  }
+      if (!nome || !email || isNaN(valor) || valor <= 0 || isNaN(parcelas)) {
+        resultado.innerText = "Preencha todos os campos corretamente para gerar a simulação.";
+        return;
+      }
 
-  if (valor > 10000) {
-    resultado.innerText = "O valor máximo permitido para simulação é R$ 10.000.";
-    return;
-  }
+      if (valor > 10000) {
+        resultado.innerText = "O valor máximo permitido para simulação é R$ 10.000.";
+        return;
+      }
 
-  const jurosMensal = 0.10;
-  const valorFinal = valor * Math.pow(1 + jurosMensal, parcelas);
-  const valorParcela = valorFinal / parcelas;
+      const jurosMensal = 0.10;
+      const valorFinal = valor * Math.pow(1 + jurosMensal, parcelas);
+      const valorParcela = valorFinal / parcelas;
 
-  const mensagem =
-    `Olá! Fiz uma simulação de pagamento:\n\n` +
-    `💰 Valor Total com Juros: R$ ${valorFinal.toFixed(2)}\n` +
-    `📆 Parcelado em ${parcelas}x de R$ ${valorParcela.toFixed(2)}\n\n` +
-    `Se tiver alguma dúvida, estou à disposição!`;
+      const mensagem =
+        `📄 *Simulação de Pagamento*\n\n` +
+        `👤 Nome: ${nome}\n` +
+        `📧 Email: ${email}\n\n` +
+        `💰 Valor Total com Juros: R$ ${valorFinal.toFixed(2)}\n` +
+        `📆 Parcelado em ${parcelas}x de R$ ${valorParcela.toFixed(2)}\n\n` +
+        `Se tiver alguma dúvida, estou à disposição!`;
 
-  resultado.innerText = mensagem;
+      resultado.innerText = mensagem;
 
-  const numeroWhatsApp = "5511948485475";
-  const mensagemCodificada = encodeURIComponent(mensagem);
-  const whatsappURL = `https://wa.me/${numeroWhatsApp}?text=${mensagemCodificada}`;
+      const numeroWhatsApp = "5511948485475";
+      const mensagemCodificada = encodeURIComponent(mensagem);
+      const whatsappURL = `https://wa.me/${numeroWhatsApp}?text=${mensagemCodificada}`;
 
-  const whatsappLink = document.getElementById("whatsapp-link");
-  whatsappLink.href = whatsappURL;
-  whatsappLink.style.display = 'inline-block';
-}
-
+      const whatsappLink = document.getElementById("whatsapp-link");
+      whatsappLink.href = whatsappURL;
+      whatsappLink.style.display = 'inline-block';
+    }
   </script>
 
 </body>
 </html>
+
+
 
 
