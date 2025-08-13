@@ -20,26 +20,26 @@ header {
   margin-bottom: 40px;
 }
 
-/* Logo responsiva */
 .logo {
   display: block;
-  width: 100%;
-  max-width: 170px; /* tamanho máximo no desktop */
-  height: auto;
+  width: auto;       /* largura automática */
+  height: 60px;      /* altura fixa mais baixa */
+  object-fit: contain; /* mantém a proporção sem cortar */
   margin: 0 auto 15px auto;
 }
 
 @media (max-width: 768px) {
   .logo {
-    max-width: 250px;
+    height: 50px; /* menor em tablets */
   }
 }
 
 @media (max-width: 480px) {
   .logo {
-    max-width: 180px;
+    height: 40px; /* menor em celulares */
   }
 }
+
 
 /* Texto do cabeçalho */
 header h1 {
@@ -151,4 +151,5 @@ header p {
     font-size: 1rem;
   }
 }
+
 
