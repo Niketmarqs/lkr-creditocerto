@@ -24,7 +24,7 @@ header {
 .logo {
   display: block;
   width: 100%;
-  max-width: 350px; /* tamanho máximo no desktop */
+  max-width: 170px; /* tamanho máximo no desktop */
   height: auto;
   margin: 0 auto 15px auto;
 }
@@ -151,3 +151,4 @@ header p {
     font-size: 1rem;
   }
 }
+
