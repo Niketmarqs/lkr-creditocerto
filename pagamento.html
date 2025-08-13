@@ -67,37 +67,44 @@
       }
     }
 
-    function calcularPagamento() {
-      const valor = parseFloat(document.getElementById("valor").value);
-      const parcelas = parseInt(document.getElementById("parcelas").value);
-      const resultado = document.getElementById("resultado");
+  function calcularPagamento() {
+  const valor = parseFloat(document.getElementById("valor").value);
+  const parcelas = parseInt(document.getElementById("parcelas").value);
+  const resultado = document.getElementById("resultado");
 
-      if (isNaN(valor) || valor <= 0 || isNaN(parcelas)) {
-        resultado.innerText = "Informe um valor válido e selecione o número de parcelas.";
-        return;
-      }
+  if (isNaN(valor) || valor <= 0 || isNaN(parcelas)) {
+    resultado.innerText = "Informe um valor válido e selecione o número de parcelas.";
+    return;
+  }
 
-      const jurosMensal = 0.10;
-      const valorFinal = valor * Math.pow(1 + jurosMensal, parcelas);
-      const valorParcela = valorFinal / parcelas;
+  if (valor > 10000) {
+    resultado.innerText = "O valor máximo permitido para simulação é R$ 10.000.";
+    return;
+  }
 
-      const mensagem =
-        `Olá! Fiz uma simulação de pagamento:\n\n` +
-        `💰 Valor Total com Juros: R$ ${valorFinal.toFixed(2)}\n` +
-        `📆 Parcelado em ${parcelas}x de R$ ${valorParcela.toFixed(2)}\n\n` +
-        `Se tiver alguma dúvida, estou à disposição!`;
+  const jurosMensal = 0.10;
+  const valorFinal = valor * Math.pow(1 + jurosMensal, parcelas);
+  const valorParcela = valorFinal / parcelas;
 
-      resultado.innerText = mensagem;
+  const mensagem =
+    `Olá! Fiz uma simulação de pagamento:\n\n` +
+    `💰 Valor Total com Juros: R$ ${valorFinal.toFixed(2)}\n` +
+    `📆 Parcelado em ${parcelas}x de R$ ${valorParcela.toFixed(2)}\n\n` +
+    `Se tiver alguma dúvida, estou à disposição!`;
 
-      const numeroWhatsApp = "5511948485475";
-      const mensagemCodificada = encodeURIComponent(mensagem);
-      const whatsappURL = `https://wa.me/${numeroWhatsApp}?text=${mensagemCodificada}`;
+  resultado.innerText = mensagem;
 
-      const whatsappLink = document.getElementById("whatsapp-link");
-      whatsappLink.href = whatsappURL;
-      whatsappLink.style.display = 'inline-block';
-    }
+  const numeroWhatsApp = "5511948485475";
+  const mensagemCodificada = encodeURIComponent(mensagem);
+  const whatsappURL = `https://wa.me/${numeroWhatsApp}?text=${mensagemCodificada}`;
+
+  const whatsappLink = document.getElementById("whatsapp-link");
+  whatsappLink.href = whatsappURL;
+  whatsappLink.style.display = 'inline-block';
+}
+
   </script>
 
 </body>
 </html>
+
