@@ -57,58 +57,62 @@
   </div>
 
   <script>
-    function consultarCPF() {
-      const cpf = document.getElementById("cpf").value;
-      if (cpf.length === 11) {
-        alert("CPF enviado para consulta: " + cpf);
-      } else {
-        alert("Digite um CPF válido (11 dígitos)");
-      }
+  function consultarCPF() {
+    const cpf = document.getElementById("cpf").value;
+    if (cpf.length === 11) {
+      alert("CPF enviado para consulta: " + cpf);
+    } else {
+      alert("Digite um CPF válido (11 dígitos)");
+    }
+  }
+
+  function calcularPagamento() {
+    const nome = document.getElementById("nome").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const cpf = document.getElementById("cpf").value.trim(); // <-- Captura o CPF
+    const valor = parseFloat(document.getElementById("valor").value);
+    const parcelas = parseInt(document.getElementById("parcelas").value);
+    const resultado = document.getElementById("resultado");
+
+    if (!nome || !email || !cpf || isNaN(valor) || valor <= 0 || isNaN(parcelas)) {
+      resultado.innerText = "Preencha todos os campos corretamente para gerar a simulação.";
+      return;
     }
 
-    function calcularPagamento() {
-      const nome = document.getElementById("nome").value.trim();
-      const email = document.getElementById("email").value.trim();
-      const valor = parseFloat(document.getElementById("valor").value);
-      const parcelas = parseInt(document.getElementById("parcelas").value);
-      const resultado = document.getElementById("resultado");
-
-      if (!nome || !email || isNaN(valor) || valor <= 0 || isNaN(parcelas)) {
-        resultado.innerText = "Preencha todos os campos corretamente para gerar a simulação.";
-        return;
-      }
-
-      if (valor > 10000) {
-        resultado.innerText = "O valor máximo permitido para simulação é R$ 10.000.";
-        return;
-      }
-
-      const jurosMensal = 0.50;
-      const valorFinal = valor * Math.pow(1 + jurosMensal, parcelas);
-      const valorParcela = valorFinal / parcelas;
-
-      const mensagem =
-        `📄 *Simulação de Pagamento*\n\n` +
-        `👤 Nome: ${nome}\n` +
-        `📧 Email: ${email}\n\n` +
-        `💰 Valor Total com Juros: R$ ${valorFinal.toFixed(2)}\n` +
-        `📆 Parcelado em ${parcelas}x de R$ ${valorParcela.toFixed(2)}\n\n` +
-        `Se tiver alguma dúvida, estou à disposição!`;
-
-      resultado.innerText = mensagem;
-
-      const numeroWhatsApp = "5511948485475";
-      const mensagemCodificada = encodeURIComponent(mensagem);
-      const whatsappURL = `https://wa.me/${numeroWhatsApp}?text=${mensagemCodificada}`;
-
-      const whatsappLink = document.getElementById("whatsapp-link");
-      whatsappLink.href = whatsappURL;
-      whatsappLink.style.display = 'inline-block';
+    if (valor > 10000) {
+      resultado.innerText = "O valor máximo permitido para simulação é R$ 10.000.";
+      return;
     }
-  </script>
+
+    const jurosMensal = 0.50;
+    const valorFinal = valor * Math.pow(1 + jurosMensal, parcelas);
+    const valorParcela = valorFinal / parcelas;
+
+    const mensagem =
+      `📄 *Simulação de Pagamento*\n\n` +
+      `👤 Nome: ${nome}\n` +
+      `📧 Email: ${email}\n` +
+      `🪪 CPF: ${cpf}\n\n` + // <-- CPF incluso na mensagem
+      `💰 Valor Total com Juros: R$ ${valorFinal.toFixed(2)}\n` +
+      `📆 Parcelado em ${parcelas}x de R$ ${valorParcela.toFixed(2)}\n\n` +
+      `Se tiver alguma dúvida, estou à disposição!`;
+
+    resultado.innerText = mensagem;
+
+    const numeroWhatsApp = "5511948485475";
+    const mensagemCodificada = encodeURIComponent(mensagem);
+    const whatsappURL = `https://wa.me/${numeroWhatsApp}?text=${mensagemCodificada}`;
+
+    const whatsappLink = document.getElementById("whatsapp-link");
+    whatsappLink.href = whatsappURL;
+    whatsappLink.style.display = 'inline-block';
+  }
+</script>
+
 
 </body>
 </html>
+
 
 
 
