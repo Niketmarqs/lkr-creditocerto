@@ -84,9 +84,10 @@
       return;
     }
 
-    const jurosMensal = 0.50;
-    const valorFinal = valor * Math.pow(1 + jurosMensal, parcelas);
-    const valorParcela = valorFinal / parcelas;
+     // 🔥 Juros fixo de 45% sobre o valor
+  const juros = 0.45;
+  const valorFinal = valor * (1 + juros);
+  const valorParcela = valorFinal / parcelas;
 
     const mensagem =
       `📄 *Simulação de Pagamento*\n\n` +
@@ -112,6 +113,7 @@
 
 </body>
 </html>
+
 
 
 
